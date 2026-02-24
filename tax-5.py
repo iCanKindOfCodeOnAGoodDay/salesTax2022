@@ -49,7 +49,6 @@ print(f"Additional tax due to personal usage:               {taxOnPersonals:.2f}
 print("_________________________________________________________________________\n")
 print(f"Sales tax due:                                              {combinedSepTax:.2f}")
 
-
 # Decemeber Quarter | 1 of 1 sale is to California Customer
 salesTaxDec = salesDec * .1
 print("\n\n#\nQuarter ending December 31                          1/1 Sale in California\n")
