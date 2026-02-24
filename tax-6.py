@@ -11,19 +11,20 @@ payoutsQuarterEndingSep30 = [96.5, 145.05, 33.68, 63.69, 31.74, 38.54, 69.31, 10
 payoutsQuarterEndingDec31 = [141.33]
 caRatio = 1/7 # see header
 
-
 # definitions
 ###################################################################################################
 
-# add up payouts from each input period, return total
 def total(payment):
+    # add up payouts from each input period, return total
     total = 0
     for month in payment:
         total += month
     return total
 
-# September Quarter | No known sales to California customers, return total tax
-def september(salesSep):
+def september(salesSep):    
+    # Quarter 3 | No known sales to California customers
+    # Inputs sales for Q3
+    # Returns sales tax for Q3
     otherState = 33.68 + 63.39 + 31.74 + 38.54 + 101.65 + 28.83
     unknown = salesSep - otherState # subtract the one known ca sale
     calEstimated = unknown * caRatio
@@ -48,8 +49,10 @@ def september(salesSep):
     print(f"Sales tax due:                                      {sepTax:.2f}")
     return sepTax
 
-# Decemeber Quarter | 1 of 1 sale is to California Customer, return total tax
-def decemeber(salesDec):
+def decemeber(salesDec):        
+    # Quarter 4 | 1 of 1 sale is to California Customer
+    # Inputs sales for Q4
+    # Returns sales tax for Q4
     salesTaxDec = salesDec * .1
     print("\n*************** Quarter ending December 31 ***************")
     print("1/1 Sale in California")
@@ -57,9 +60,14 @@ def decemeber(salesDec):
     print("_________________________________________________________________________\n")
     print(f"Sales tax due:                                      {salesTaxDec:.2f}")
     return salesTaxDec
-
-# Actual Total, inputs from two "calls to total() func, and 1 return from each september () and decemeber() func, no returns"
+ 
 def allSales(salesSep, salesDec, sepTax, salesTaxDec):
+# Prints Totals to console; No Returns
+# 4 Inputs
+    # total(q3Data)
+    # total(q4Data) 
+    # september(total(q3Data)) 
+    # december(total(q4Data))
     totalSales = salesSep + salesDec
     actualTotalTax = sepTax + salesTaxDec
     estimatedTax = totalSales * .1
@@ -78,14 +86,14 @@ def main():
     """
     # Q3
     salesSep = total(payoutsQuarterEndingSep30)
-    sepTax = september(salesSep)
+    sepTax = september(salesSep) # Prints to Console
     
     # Q4
     salesDec = total(payoutsQuarterEndingDec31)
-    salesTaxDec = decemeber(salesDec)
+    salesTaxDec = decemeber(salesDec) # Prints to Console
     
     # Totals
-    allSales(salesSep, salesDec, sepTax, salesTaxDec)
+    allSales(salesSep, salesDec, sepTax, salesTaxDec) # Prints to Console
     
 # run program 
 if __name__ == "__main__":
