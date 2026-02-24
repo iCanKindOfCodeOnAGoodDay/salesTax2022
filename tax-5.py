@@ -65,7 +65,6 @@ estimatedTax = totalSales * .1
 print("Totals\n")
 print(f"Total Sales:                                        {totalSales:.2f}")
 print(f"Estimated Tax:                                      {estimatedTax:.2f}")
-
 print("_________________________________________________________________________\n")
 print(f"Actual Total Tax:                                           {actualTotalTax:.2f}")
 print("\n\n\nEND")
